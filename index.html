@@ -1,385 +1,491 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Adolfo Álvarez - Alvar3z - Portafolios</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
-        type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adolfo Álvarez — Hacker Ético & Auditor Informático</title>
+  <meta name="description" content="Landing page profesional de ciberseguridad de Adolfo Álvarez: hacker ético, pentester y auditor informático en Chile. Pentesting web, AppSec, automatización con Python y reportes ejecutivos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c10;         /* negro profundo */
+      --panel:#111218;      /* negro azulado */
+      --panel-2:#0e0f14;
+      --fg:#e5e7eb;         /* gris claro */
+      --muted:#9ca3af;      /* gris medio */
+      --accent:#ef233c;     /* rojo principal */
+      --accent-2:#b80f2e;   /* rojo oscuro */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.4);
+      --shadow-in: inset 0 0 0 1px rgba(255,255,255,.05);
+      --font-hacker: 'Share Tech Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+      --border-red: rgba(239,35,60,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: var(--font-hacker);
+      color:var(--fg);
+      /* Fondo sutil y uniforme */
+      background:
+        radial-gradient(900px 520px at 85% -25%, rgba(239,35,60,.05), transparent),
+        radial-gradient(800px 500px at -15% 0%, rgba(239,35,60,.035), transparent),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Nav */
+    .nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px); background: rgba(11,12,16,.85); border-bottom:1px solid var(--border-red)}
+    .wrap{max-width:1100px; margin:0 auto; padding:0 20px}
+    .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand .logo{width:36px; height:36px; border-radius:10px; background:conic-gradient(from 20deg, var(--accent), var(--accent-2)); box-shadow:0 0 0 2px rgba(239,35,60,.45), 0 8px 24px rgba(239,35,60,.35)}
+    .brand strong{letter-spacing:.3px}
+    .nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    .nav a{padding:8px 12px; border-radius:10px}
+    .nav a:hover{background:rgba(239,35,60,.12)}
+
+        /* Layout & secciones con separación consistente */
+    main{padding-bottom:40px}
+    section{padding:72px 0 0}
+    h1{margin:.2rem 0 12px; font-size:clamp(2rem, 3vw + 1rem, 3.2rem); line-height:1.12}
+    h2{margin:0 0 18px; font-size:clamp(1.2rem, 1.4vw + .9rem, 2rem)}
+    .subtitle{color:#d1d5db; font-size:1.05rem}
+
+
+
+    /* Tipografía estilo hacker */
+    h1, h2, .nav a, .brand strong, .btn, .badge, .chip, .kicker {
+      font-family: var(--font-hacker);
+      letter-spacing: .02em;
+    }
+
+    .grid-hero{display:grid; grid-template-columns:1.15fr .85fr; gap:28px}
+    .section-grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:22px}
+    .col-4{grid-column:span 4}
+    .col-8{grid-column:span 8}
+    .col-6{grid-column:span 6}
+    .col-12{grid-column:span 12}
+
+    /* Tarjetas */
+    .card{background:linear-gradient(180deg, var(--panel), var(--panel-2)); border-radius:var(--radius); border:1px solid var(--border-red); box-shadow:var(--shadow), var(--shadow-in)}
+    .card .inner{padding:28px}
+
+    .kicker{color:var(--muted); text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; margin-bottom:8px}
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 8px}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(239,35,60,.12); border:1px solid rgba(239,35,60,.35); font-size:.9rem}
+
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:600; border:1px solid rgba(255,255,255,.09); background:#15161c; box-shadow: var(--shadow-in)}
+    .btn:hover{border-color:rgba(239,35,60,.5)}
+    .btn.acc{background:linear-gradient(180deg, var(--accent), var(--accent-2)); color:white; border:0; box-shadow:0 10px 30px rgba(239,35,60,.35)}
+
+    /* Avatar + Social */
+    .profile{display:grid; grid-template-columns:96px 1fr; gap:14px; align-items:center; margin-bottom:12px}
+    .avatar{width:96px; height:96px; border-radius:999px; background:#0d0e13; border:2px solid rgba(239,35,60,.55); box-shadow:0 0 0 4px rgba(239,35,60,.12); background-size:cover; background-position:center;}
+    .avatar.hint{display:flex; align-items:center; justify-content:center; color:#9ca3af; font-size:.8rem}
+
+    .social{display:flex; gap:10px; flex-wrap:wrap}
+    .social a{display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; background:#11121a; border:1px solid var(--border-red)}
+    .social a:hover{border-color:rgba(239,35,60,.45)}
+    .social svg{width:20px; height:20px; fill:#e5e7eb}
+
+    /* Listas y chips */
+    .list{display:grid; gap:14px; padding:0; margin:0; list-style:none}
+    .item{padding:16px; border-radius:14px; background:rgba(255,255,255,.02); border:1px solid var(--border-red)}
+    .item strong{display:block; margin-bottom:6px}
+    .chips{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{padding:8px 10px; border-radius:999px; background:#161821; border:1px solid var(--border-red); font-size:.92rem}
+
+    /* Timeline */
+    .timeline{position:relative; padding-left:24px}
+    .timeline:before{content:""; position:absolute; left:8px; top:4px; bottom:4px; width:2px; background:linear-gradient(var(--accent), transparent)}
+    .tick{position:relative; margin:0 0 14px; padding:12px 14px; border-radius:12px; background:rgba(255,255,255,.02); border:1px solid var(--border-red)}
+    .tick:before{content:""; position:absolute; left:-18px; top:14px; width:10px; height:10px; background:var(--accent); border-radius:999px; box-shadow:0 0 0 2px rgba(239,35,60,.35)}/* Galería de certificaciones */
+    .gallery{display:grid; grid-template-columns:repeat(12, 1fr); gap:22px}
+    .tile{grid-column:span 4; background:linear-gradient(180deg, var(--panel), var(--panel-2)); border-radius:14px; border:1px solid var(--border-red); box-shadow:var(--shadow-in)}
+    .thumb{height:180px; border-bottom:1px solid var(--border-red); border-top-left-radius:14px; border-top-right-radius:14px; background:radial-gradient(160px 90px at 70% -20%, rgba(239,35,60,.25), transparent), #0f1016}
+    .tile .body{padding:14px}
+    .meta{display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:.85rem}
+    .badge-mini{display:inline-flex; align-items:center; padding:4px 8px; border-radius:999px; background:rgba(239,35,60,.12); border:1px solid rgba(239,35,60,.35); font-size:.78rem}
+
+    /* Responsive tiles: más grandes en desktop, 2 por fila en tablets, 1 en móvil */
+    @media (max-width: 1200px){
+      .gallery .tile{grid-column:span 6}
+      .gallery .thumb{height:160px}
+    }
+    @media (max-width: 700px){
+      .gallery .tile{grid-column:span 12}
+      .gallery .thumb{height:140px}
+    }
+
+    /* Preloader hacker */
+    .loading{overflow:hidden}
+    #preloader{position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; background:
+      radial-gradient(900px 520px at 85% -25%, rgba(239,35,60,.08), transparent),
+      radial-gradient(800px 500px at -15% 0%, rgba(239,35,60,.06), transparent),
+      #000; color:var(--fg); transition:opacity .35s ease}
+    #preloader.hide{opacity:0; pointer-events:none}
+    #preloader:before{content:""; position:absolute; inset:0; background:repeating-linear-gradient( to bottom, transparent 0, transparent 2px, rgba(239,35,60,.03) 2px, rgba(239,35,60,.03) 3px ); pointer-events:none}
+    #preloader .panel{width:min(560px, 90vw); border:1px solid var(--border-red); border-radius:16px; background:linear-gradient(180deg, var(--panel), var(--panel-2)); box-shadow:var(--shadow-in), 0 12px 40px rgba(0,0,0,.6); padding:18px}
+    #preloader .lines{min-height:96px; display:grid; gap:4px; font-family:var(--font-hacker); font-size:.95rem}
+    #preloader .bar{height:8px; background:#11121a; border:1px solid var(--border-red); border-radius:999px; overflow:hidden; margin-top:12px}
+    #preloader .bar span{display:block; height:100%; width:0%; background:linear-gradient(90deg, var(--accent), var(--accent-2))}
+    #preloader .meta{display:flex; justify-content:space-between; align-items:center; margin-top:8px; color:var(--muted)}
+    #preloader .meta button{background:#11121a; color:#e5e7eb; border:1px solid var(--border-red); border-radius:10px; padding:6px 10px}
+    #preloader .meta button:hover{border-color:rgba(239,35,60,.6)}
+
+    /* Matrix background (rojo) */
+    .nav, main, .site-footer{position:relative; z-index:1}
+    #matrix{position:fixed; inset:0; z-index:0; opacity:.08; pointer-events:none}
+    @media (prefers-reduced-motion: reduce){ #matrix{display:none} }
+
+    #matrixHero{position:absolute; inset:0; z-index:0; opacity:.22; pointer-events:none}
+
+    /* Footer negro sólido */
+    .site-footer{background:#000; border-top:1px solid var(--border-red); margin-top:72px}
+    .site-footer .wrap{display:flex; justify-content:space-between; gap:10px; align-items:center; color:var(--muted); padding:28px 20px}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .grid-hero{grid-template-columns:1fr}
+      .section-grid{grid-template-columns:repeat(12, 1fr)}
+      .col-4, .col-6, .col-8, .col-12{grid-column:span 12}
+      .nav ul{display:none}
+      .profile{grid-template-columns:72px 1fr}
+      .avatar{width:72px; height:72px}
+    }
+  </style>
 </head>
-<body id="page-top">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">Adolfo Álvarez</span>
-            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                    src="assets/img/profile.jpg" alt="..." /></span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Sobre mi</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experiencia</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Educación</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Habilidades</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Intereses</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portafolios</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Cursos y Certificaciones</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- Page Content-->
-    <div class="container-fluid p-0">
-        <!-- About-->
-        <section class="resume-section" id="about">
-            <div class="resume-section-content">
-                <h1 class="mb-0">
-                    Adolfo
-                    <span class="text-primary">Alvarez Pérez</span>
-                </h1>
-                <div class="subheading mb-5">
-                    Vivo en Santiago de Chile - <a
-                        href="mailto:adolfo.alvar3z.p@gmail.com">adolfo.alvar3z.p@gmail.com</a>
-                </div>
-                <p class="lead mb-5 text-break" style="text-align: justify;"><span class="text-primary h3">"</span>Soy
-                    un apasionado desarrollador de software con una fuerte ética de trabajo y un amor por el aprendizaje
-                    constante. Mi carrera se basa en tecnologías como Ruby on Rails, PHP, JavaScript, HTML y CSS. Me
-                    destaco por mi dedicación a mantenerme actualizado en un campo en constante evolución. Siempre estoy
-                    buscando oportunidades para experimentar con nuevas tecnologías a través de proyectos desafiantes.
-                    Mi mentalidad curiosa no se limita solo a mi trabajo, ya que incluso en mis tiempos libres, busco
-                    oportunidades para aprender algo nuevo. Soy conocido por mi enfoque ordenado y meticuloso cuando se
-                    trata de resolver problemas y desarrollar soluciones efectivas en el mundo del desarrollo de
-                    software. Mi pasión por la tecnología y mi búsqueda constante de conocimiento me hacen un activo
-                    valioso en cualquier equipo de desarrollo.<span class="text-primary h3">"</span></p>
-                <div class="social-icons">
-                    <a class="social-icon"
-                        href="https://www.linkedin.com/in/adolfo-%C3%A1lvarez-p%C3%A9rez-352523236/"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a class="social-icon" href="https://github.com/adolfoalvar3z"><i class="fab fa-github"></i></a>
-                    <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
-                    <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Experience-->
-        <section class="resume-section" id="experience">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Experiencia</h2>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">ADMINISTRATIVO INFORMÁTICO</h3>
-                        <div class="subheading mb-3">CORTE DE APELACIONES DE SANTIAGO</div>
-                        <p style="text-align: justify;">Gestionar y dar solución a los requerimientos de soporte
-                            computacional a la Corte de Apelaciones de Santiago en materias de
-                            redes, vpn, correos, impresoras, plataforma zoom, firma electrónica, respaldos de audio e
-                            inventario. Desarrollo de aplicaciones
-                            administrativas de uso interno.</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Enero 2022 - Actualidad</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">ADMINISTRATIVO INFORMÁTICO</h3>
-                        <div class="subheading mb-3">CORPORACIÓN ADMINISTRATIVA DEL PODER JUDICIAL- ZONAL SANTIAGO</div>
-                        <p style="text-align: justify;">Gestionar y dar solución a los requerimientos de soporte
-                            computacional de los tribunales de la jurisdicción en materias de redes,
-                            vpn, correos, impresoras, plataforma zoom, firma electronica, respaldos de audio e
-                            inventario. Desarrollo de aplicaciones de uso
-                            interno zonal y jurisdiccional.</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Mayo 2019 - Diciembre 2022</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">ADMINISTRATIVO 3° - INFORMÁTICO</h3>
-                        <div class="subheading mb-3">1° JUZGADO DE LETRAS DEL TRABAJO DE SANTIAGO</div>
-                        <p style="text-align: justify;">Gestionar y dar solución a los requerimientos de soporte
-                            computacional del tribunal en materias de redes, vpn, correos, impresoras,
-                            firma electronica, respaldos de audio, inventario y Sistema SITLA.Desarrollo de aplicaciones
-                            de uso interno del tribunal. Apoyo
-                            como acta en sala de audiencia.</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Mayo 2015 - Mayo 2019</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">DISEÑADOR Y DESAROLLADOR DE SITIOS WEB</h3>
-                        <div class="subheading mb-3">FREELANCE</div>
-                        <p style="text-align: justify;">Diseños en HTML, con CSS para emprendimientos y empresas
-                            emergentes, Trabajo con CMS tales como WORDPRESS, WOOCOMMERCE, DRUPAL, JOOMLA, OPENCART,
-                            PRESTASHOP.</p>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Mayo 2011 - Abril 2015</span></div>
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Education-->
-        <section class="resume-section" id="education">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Educación</h2>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">DIPLOMADO EN GESTIÓN DE PROYECTOS INFORMÁTICOS</h3>
-                        <div class="subheading mb-3">INSTITUTO PROFESIONAL DE ARTES Y CIENCIAS DE LA COMUNICACIÓN</div>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Marzo 2017 - Agosto 2017</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">DIPLOMADO EN CONTROL, SEGURIDAD Y AUDITORÍA COMPUTACIONAL</h3>
-                        <div class="subheading mb-3">UNIVERSIDAD DE SANTIAGO DE CHILE</div>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Marzo 2016 - Octubre 2016</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <div class="flex-grow-1">
-                        <h3 class="mb-0">INGENIERO EN INFORMATICA</h3>
-                        <div class="subheading mb-3">INSTITUTO PROFESIONAL LATINOAMERICANO DE COMERCIO EXTERIOR</div>
-                    </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Marzo 2011 - Marzo 2015</span></div>
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Skills-->
-        <section class="resume-section" id="skills">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Habilidades</h2>
-                <div class="subheading mb-3">Tecnologías, Lenguajes de programación y herramientas</div>
-                <ul class="list-inline dev-icons text-success">
-                    <li class="list-inline-item"><i class="fab fa-html5"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-bootstrap"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-js-square"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-php"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-wordpress"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-opencart"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-python"></i></li>
-                    <li class="list-inline-item"><i class="fa-regular fa-gem"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-github"></i></li>
-                    <li class="list-inline-item"><i class="fab fa-ubuntu"></i></li>
-                    <li class="list-inline-item"><i class="fa-solid fa-terminal"></i></li>
-                </ul>
-                <div class="subheading mb-3">FLUJO DE TRABAJO </div>
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-code"></i></span>
-                        Design Thinking
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-code"></i></span>
-                        Mobile-First, Diseños Responsivos
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-code"></i></span>
-                        Pruebas y depuración entre navegadores
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-code"></i></span>
-                        Equipos Multidisciplinarios
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-code"></i></span>
-                        Desarrollo Agil & Scrum
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <!-- Interests-->
-        <section class="resume-section" id="interests">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Intereses</h2>
-                <p class="lead text-break" style="text-align: justify;"><span class="text-primary h3">"</span>Fuera del
-                    ámbito profesional, tengo una gran variedad de intereses que enriquecen mi vida. Me apasiona la
-                    tecnología, y disfruto de la lectura sobre los últimos avances y tendencias en este campo. Además,
-                    me sumerjo en el mundo de los juegos en línea, donde me divierto explorando nuevos mundos virtuales
-                    y desafiando a jugadores de todo el mundo.
-
-                    También tengo un lado lúdico que comparto con mis amigos: nos reunimos para jugar juegos de cartas
-                    Pokémon, lo que nos brinda momentos divertidos y competitivos.
-
-                    Por otro lado, valoro mucho el tiempo al aire libre y la conexión con la naturaleza. Disfruto de
-                    paseos en la naturaleza con mi hijo y pareja, explorando los maravillosos paisajes que nos ofrece el mundo
-                    natural.
-
-                    Además, mi vida está enriquecida por el tiempo que paso con mi familia y amigos. Compartir momentos
-                    y experiencias con las personas que quiero es fundamental para mí, y siempre busco oportunidades
-                    para fortalecer esos lazos.<span class="text-primary h3">"</span></p>
-            </div>
-        </section>
-        <hr class="m-0" />
-        <section class="resume-section" id="portfolio">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Portafolios</h2>
-                <div class="row">
-                    <div class="col-sm-12 col-lg-4 my-1">
-                        <div class="card bg-dark">
-                            <img src="assets/img/sites/Screenshot_1.png" class="card-img-top" alt="Viajes Chile">
-                            <div class="card-body">
-                                <h5 class="card-title h3 text-center">Viajes Chile</h5>
-                                <p class="card-text">Sitio para desafio de bootcamp en el cual revisaban dominio de
-                                    html, css y bootstrap.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-center"> Tech: Para este trabajo se usó HTML5, CSS3, Bootstrap</li>
-                            </ul>
-                            <div class="card-body  text-center">
-                                <a href="https://adolfoalvar3z.github.io/viajes-chile/"
-                                    class="btn btn-success">VISITAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-4 my-1">
-                        <div class="card bg-dark">
-                            <img src="assets/img/sites/Screenshot_2.png" class="card-img-top" alt="Viajes Chile">
-                            <div class="card-body">
-                                <h5 class="card-title h3 text-center">Generails</h5>
-                                <p class="card-text">Aplicativo para apoyar con generación de scaffold, models y controladores en Ruby on Rails.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-center"> Tech: Para este trabajo se usó HTML5, CSS3, Bootstrap, Javascript</li>
-                            </ul>
-                            <div class="card-body  text-center">
-                                <a href="https://adolfoalvar3z.github.io/generails/"
-                                    class="btn btn-success">VISITAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-4 my-1">
-                        <div class="card bg-dark">
-                            <img src="assets/img/sites/Screenshot_3.png" class="card-img-top" alt="Viajes Chile">
-                            <div class="card-body">
-                                <h5 class="card-title h3 text-center">Prixpets</h5>
-                                <p class="card-text">Sitio web para Prixsalud, proyecto de caracter comercial para isapre de mascotas.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-center"> Tech: Para este trabajo se usó HTML5, CSS3, Bootstrap, codeigniter y Mysql</li>
-                            </ul>
-                            <div class="card-body  text-center">
-                                <a href="https://adolfoalvar3z.github.io/viajes-chile/"
-                                    class="btn btn-success">VISITAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-4 my-1">
-                        <div class="card bg-dark">
-                            <img src="assets/img/sites/Screenshot_4.png" class="card-img-top" alt="Viajes Chile">
-                            <div class="card-body">
-                                <h5 class="card-title h3 text-center">Suricata</h5>
-                                <p class="card-text">Sitio para desafio de bootcamp en el cual revisaban dominio de
-                                    html, css y bootstrap.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-center"> Tech: Para este trabajo se usó HTML5, CSS3, Bootstrap</li>
-                            </ul>
-                            <div class="card-body  text-center">
-                                <a href="https://adolfoalvar3z.github.io/suricata/"
-                                    class="btn btn-success">VISITAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-4 my-1">
-                        <div class="card bg-dark">
-                            <img src="assets/img/sites/Screenshot_5.png" class="card-img-top" alt="Viajes Chile">
-                            <div class="card-body">
-                                <h5 class="card-title h3 text-center">Olivia Ross</h5>
-                                <p class="card-text">Sitio para desafio de bootcamp en el cual revisaban dominio de
-                                    html, css y bootstrap.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-center"> Tech: Para este trabajo se usó HTML5, CSS3, Bootstrap</li>
-                            </ul>
-                            <div class="card-body  text-center">
-                                <a href="https://adolfoalvar3z.github.io/olivia-ross/"
-                                    class="btn btn-success">VISITAR</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-lg-4 my-1">
-                        <div class="card bg-dark">
-                            <img src="assets/img/sites/Screenshot_6.png" class="card-img-top" alt="Viajes Chile">
-                            <div class="card-body">
-                                <h5 class="card-title h3 text-center">Cuppon</h5>
-                                <p class="card-text">Sitio para desafio de bootcamp en el cual revisaban dominio de
-                                    html, css y bootstrap.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item text-center"> Tech: Para este trabajo se usó HTML5, CSS3, Bootstrap</li>
-                            </ul>
-                            <div class="card-body  text-center">
-                                <a href="https://adolfoalvar3z.github.io/cuppon/"
-                                    class="btn btn-success">VISITAR</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <hr class="m-0" />
-
-        <!-- Awards-->
-        <section class="resume-section" id="awards">
-            <div class="resume-section-content">
-                <h2 class="mb-5">Cursos y Certificaciones</h2>
-                <ul class="fa-ul mb-0">
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Certificación en Ruby on Rails - Inforcap
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Diplomado en Diseño y Programación Web - AIEP, SENCE y Fundación telefonica MOVISTAR
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        CERTIFICACIÓN CCNA ROUTING AND SWITCHING: INTRODUCCIÓN A REDES - Academia Cisco
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Certificado Introducción a la Seguridad Cibernética - Academia Cisco
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Curso de MEJORAMIENTO CONTINUO Y CALIDAD EN LOS PROCESOS - Academia Judicial
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Curso de Aprende WordPress de forma sencilla - AIEP, SENCE y Fundación telefonica MOVISTAR
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Diplomado Sociedad Digital de SENCE - AIEP, SENCE y Fundación telefonica MOVISTAR
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Curso Introducción a Ruby - Clases del Bootcamp de Rails - CodigoFacilito
-                    </li>
-                    <li>
-                        <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
-                        Curso de introducción al desarrollo móvil - CodigoFacilito
-                    </li>
-                </ul>
-            </div>
-        </section>
+<body>
+  <div id="preloader" role="status" aria-live="polite">
+    <div class="panel">
+      <div class="lines" id="pre-lines">
+        <div>$ init secops...</div>
+      </div>
+      <div class="bar"><span id="prebar"></span></div>
+      <div class="meta"><span id="pre-per">0%</span><button id="pre-skip" type="button">Saltar</button></div>
     </div>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+  </div>
+  <canvas id="matrix" aria-hidden="true"></canvas>
+  <div class="nav">
+    <div class="wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <strong>Adolfo Álvarez</strong>
+      </div>
+      <ul>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#certificaciones">Certificaciones</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="grid-hero">
+        <!-- Columna izquierda: hero principal -->
+        <div class="card">
+          <div class="inner">
+            <div class="kicker">Hacker Ético · Pentester · Auditor Informático</div>
+            <h1>Diseño y pruebo defensas para que tus sistemas no sean el eslabón débil.</h1>
+            <p class="subtitle">Pentesting web, AppSec y análisis de datos de seguridad con <span class="chip" style="padding:.2em .6em">Python</span> y visualización ejecutiva. En <strong>Santiago, Chile</strong> (Pudahuel), trabajando en el sector público y proyectos privados.</p>
+
+            <div class="badges">
+              <span class="badge" title="Corporación Administrativa del Poder Judicial">Auditor Informático · CAPJ</span>
+              <span class="badge">eJPTv2 (en preparación)</span>
+              <span class="badge">Google Cybersecurity (Cert.)</span>
+              <span class="badge">CAP – AppSec</span>
+            </div>
+
+            <!-- CTA: solo web y CV -->
+            <div class="cta">
+              <a class="btn acc" href="#" id="btn-web">Mi sitio web</a>
+              <a class="btn" href="#" id="btn-cv" download>Descargar CV</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna derecha: perfil + redes + sobre mí / a qué me dedico -->
+        <div class="card">
+          <div class="inner">
+            <div class="profile">
+              <div class="avatar hint" id="avatar" style="background-image:url('');">Foto</div>
+              <div>
+                <strong style="display:block; font-size:1.05rem">Adolfo Álvarez</strong>
+                <span style="color:var(--muted)">Hacker Ético · Pentester · Auditor Informático</span>
+                <div class="social" style="margin-top:10px">
+                  <a href="#" aria-label="LinkedIn" title="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.8-2.2 3.8-2.2 4.1 0 4.9 2.7 4.9 6.2V24h-4v-7.1c0-1.7 0-3.8-2.3-3.8s-2.7 1.8-2.7 3.7V24h-4V8z"/></svg>
+                  </a>
+                  <a href="#" aria-label="GitHub" title="GitHub">
+                    <svg viewBox="0 0 24 24"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.5-1.4-1.9-1.4-1.9-1.1-.8.1-.8.1-.8 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.4 3.6 1.1.1-.8.4-1.4.7-1.8-2.6-.3-5.4-1.3-5.4-6a4.7 4.7 0 0 1 1.3-3.3 4.3 4.3 0 0 1 .1-3.2s1-.3 3.4 1.3a11.6 11.6 0 0 1 6.2 0c2.4-1.6 3.4-1.3 3.4-1.3.4 1 .3 2 .1 3.2a4.7 4.7 0 0 1 1.3 3.3c0 4.7-2.8 5.7-5.4 6 .4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+                  </a>
+                  <a href="#" aria-label="X" title="X/Twitter">
+                    <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.1 8.1L23.5 22h-6.9l-5.4-7.1L4.9 22H2l7.7-8.8L.8 2H7.9l4.9 6.5L18.9 2z"/></svg>
+                  </a>
+                  <a href="mailto:adolfo.alvar3z.p@gmail.com" aria-label="Email" title="Email">
+                    <svg viewBox="0 0 24 24"><path d="M12 13 2 6.8V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6.8L12 13zm10-9H2l10 7 10-7z"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="list">
+              <div class="item">
+                <strong id="sobre-mi">¿Quién soy?</strong>
+                <div>Soy Adolfo Álvarez, profesional de ciberseguridad con foco en <strong>pentesting web</strong>, <strong>auditoría técnica</strong> y <strong>automatización</strong>. Me muevo entre el código y la gestión: pruebo, mido y reporto riesgos con claridad para que los equipos actúen rápido.</div>
+              </div>
+              <div class="item">
+                <strong>¿A qué me dedico?</strong>
+                <div>Actualmente desempeño el rol de <strong>Auditor Informático</strong>, liderando <em>vulnerability assessment</em>, pruebas de intrusión en aplicaciones web, <em>hardening</em> y tableros ejecutivos de riesgo.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+
+
+    <!-- Proceso -->
+
+
+    <!-- Resultados / métricas -->
+
+
+    <section id="formacion">
+      <div class="section-grid">
+        <div class="col-4">
+          <h2>Formación</h2>
+          <p class="subtitle">Ingeniería, diplomados y certificaciones orientadas a seguridad, redes y desarrollo.</p>
+        </div>
+        <div class="col-8">
+          <ul class="list">
+            <li class="item"><strong>Certificaciones & cursos clave</strong> — Google Cybersecurity (Coursera), Certified AppSec Practitioner (The SecOps Group), CAPC (Certiprof), CCNA: Introducción a Redes (Cisco), Python Essentials 1 (Cisco), ISO 27001 (Seguridad Cero), bootcamps y cursos USACH de auditoría y marcos de control.</li>
+            <li class="item"><strong>Diplomado</strong> — Gestión de Proyectos Informáticos (2017).</li>
+            <li class="item"><strong>Diplomado</strong> — Control, Seguridad y Auditoría Computacional (USACH, 2016).</li>
+            <li class="item"><strong>Ingeniero en Informática</strong> — IPLACEX (2011–2015). Titulado.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="section-grid">
+        <div class="col-4">
+          <h2>Experiencia</h2>
+          <p class="subtitle">Sector público (justicia) y desarrollo de soluciones internas. Enfoque en impacto medible.</p>
+        </div>
+        <div class="col-8 timeline">
+          <div class="tick">
+            <strong>Auditor Informático — Corporación Administrativa del Poder Judicial (2024 – actual)</strong>
+            <div>Evaluación de vulnerabilidades y pentesting en sistemas web; scripting en <span class="chip">Python</span> / SQL para análisis; reportes y visualizaciones con <span class="chip">Power BI</span>; automatización de tareas.</div>
+          </div>
+          <div class="tick">
+            <strong>Administrativo Informático — Corte de Apelaciones de Santiago (2022 – actual)</strong>
+            <div>Soporte de redes, VPN, firma electrónica, Zoom; desarrollo de aplicaciones internas.</div>
+          </div>
+          <div class="tick">
+            <strong>Administrativo Informático — CAPJ (2019 – actual)</strong>
+            <div>Soporte a tribunales de la jurisdicción; desarrollo de aplicaciones zonales/jurisdiccionales.</div>
+          </div>
+          <div class="tick">
+            <strong>Administrativo 3° — 1° Juzgado de Letras del Trabajo de Santiago (2015 – 2019)</strong>
+            <div>Soporte integral TI (redes, VPN, correo, inventario); desarrollo de aplicaciones internas.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <div class="section-grid">
+        <div class="col-4">
+          <h2>Habilidades</h2>
+          <p class="subtitle">Pentesting web, AppSec, análisis y automatización. Me integro con desarrollo y operaciones.</p>
+        </div>
+        <div class="col-8">
+          <div class="chips">
+            <span class="chip">OWASP Top 10</span>
+            <span class="chip">Burp Suite</span>
+            <span class="chip">ZAP / Caido</span>
+            <span class="chip">Kali Linux</span>
+            <span class="chip">Python / SQL</span>
+            <span class="chip">Power BI</span>
+            <span class="chip">Linux</span>
+            <span class="chip">Git</span>
+            <span class="chip">ISO 27001</span>
+            <span class="chip">NIST CSF</span>
+          </div>
+
+          <div class="card" style="margin-top:18px">
+            <div class="inner">
+              <h3 style="margin:6px 0 10px">¿Por qué deberían contactarme?</h3>
+              <ul>
+                <li>Reporte ejecutivo claro (riesgos priorizados, CVSS, evidencias reproducibles).</li>
+                <li>Automatizo hallazgos con scripts para reducir tiempo de remediación.</li>
+                <li>Experiencia real en ambientes críticos del sector justicia.</li>
+                <li>Comunicación fluida con equipos técnicos y directivos sin perder precisión.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificaciones">
+      <div class="section-grid">
+        <div class="col-4">
+          <h2>Certificaciones</h2>
+          <p class="subtitle">Muestra de credenciales y cursos relevantes. Puedes reemplazar cada tarjeta con tu certificado real y enlace verificable.</p>
+        </div>
+        <div class="col-8">
+          <div class="gallery">
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>Google Cybersecurity</strong><div class="meta"><span>Coursera</span><span class="badge-mini">2024</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>Certified AppSec Practitioner</strong><div class="meta"><span>The SecOps Group</span><span class="badge-mini">CAP</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>CAPC</strong><div class="meta"><span>Certiprof</span><span class="badge-mini">Cred.</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>CCNA: Intro a Redes</strong><div class="meta"><span>Cisco</span><span class="badge-mini">2023</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>Python Essentials 1</strong><div class="meta"><span>Cisco</span><span class="badge-mini">PE1</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>ISO 27001 (Fund.)</strong><div class="meta"><span>Seguridad Cero</span><span class="badge-mini">2023</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>eJPTv2 (en preparación)</strong><div class="meta"><span>Ine</span><span class="badge-mini">Prep</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>NIST CSF (workshops)</strong><div class="meta"><span>USACH</span><span class="badge-mini">2022</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>Auditoría Computacional</strong><div class="meta"><span>USACH</span><span class="badge-mini">Dipl.</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>Gestión de Proyectos TI</strong><div class="meta"><span>—</span><span class="badge-mini">Dipl.</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>AppSec Labs</strong><div class="meta"><span>—</span><span class="badge-mini">Lab</span></div></div></div>
+            <div class="tile"><div class="thumb"></div><div class="body"><strong>Forense & Hardening</strong><div class="meta"><span>—</span><span class="badge-mini">Bootcamp</span></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span id="year"></span> Adolfo Álvarez — Ciberseguridad & Pentesting</div>
+      <div>Tema <span style="border:1px solid rgba(255,255,255,.18); padding:2px 8px; border-radius:8px">negro + rojo</span></div>
+    </div>
+  </footer>
+
+
+
+  <script>
+    // Preloader hacker (sutil, máximo ~3s, con botón "Saltar")
+    (function(){
+      const pre = document.getElementById('preloader');
+      if(!pre) return;
+      document.body.classList.add('loading');
+      const per = document.getElementById('pre-per');
+      const bar = document.getElementById('prebar');
+      const lines = document.getElementById('pre-lines');
+      const skip = document.getElementById('pre-skip');
+      const msgs = [
+        'loading modules: recon, exploit, report',
+        'fingerprinting targets…',
+        'checking CVEs…',
+        'initializing matrix…',
+        'ready.'
+      ];
+      let m = 0, p = 0;
+      const prog = setInterval(()=>{
+        p = Math.min(100, p + (Math.random()*18|0));
+        if(bar) bar.style.width = p + '%';
+        if(per) per.textContent = p + '%';
+        if(m < msgs.length){ const d=document.createElement('div'); d.textContent = '$ ' + msgs[m++]; lines && lines.appendChild(d); }
+        if(p >= 100) done();
+      }, 180);
+      const timeout = setTimeout(done, 2800);
+      function done(){
+        clearInterval(prog); clearTimeout(timeout);
+        pre.classList.add('hide'); document.body.classList.remove('loading');
+        setTimeout(()=> pre.remove(), 350);
+      }
+      if(skip) skip.addEventListener('click', done);
+      window.addEventListener('load', ()=> setTimeout(done, 350));
+    })();
+
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // CTAs placeholders: personaliza tus enlaces
+    document.getElementById('btn-web').setAttribute('href', '#');
+    document.getElementById('btn-web').setAttribute('href', '#');
+    document.getElementById('btn-cv').setAttribute('href', '#');
+
+    // Matrix rojo sutil
+    (function(){
+      const c = document.getElementById('matrix');
+      if(!c) return;
+      const ctx = c.getContext('2d');
+      let W, H; const fontSize = 16;
+      let columns = 0; let drops = [];
+      const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\\{}[]#%@*&+-=アカサタナハマヤラワ0123456789';
+      function resize(){
+        W = c.width = window.innerWidth; H = c.height = window.innerHeight;
+        columns = Math.floor(W / fontSize);
+        drops = Array(columns).fill(1);
+      }
+      function draw(){
+        ctx.fillStyle = 'rgba(0,0,0,0.05)';
+        ctx.fillRect(0,0,W,H);
+        ctx.fillStyle = 'rgba(239,35,60,0.9)';
+        ctx.font = fontSize + 'px monospace';
+        for(let i=0;i<drops.length;i++){
+          const ch = chars[Math.floor(Math.random()*chars.length)];
+          ctx.fillText(ch, i*fontSize, drops[i]*fontSize);
+          if(drops[i]*fontSize > H && Math.random() > 0.975){ drops[i]=0; }
+          drops[i]++;
+        }
+      }
+      window.addEventListener('resize', resize);
+      resize();
+      setInterval(draw, 33);
+    })();
+
+    // Matrix rojo INTENSO en el HERO
+    (function(){
+      const section = document.querySelector('section.hero');
+      if(!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const c = document.createElement('canvas');
+      c.id = 'matrixHero'; c.setAttribute('aria-hidden','true');
+      section.style.position='relative';
+      const grid = section.querySelector('.grid-hero');
+      if(grid){ grid.style.position='relative'; grid.style.zIndex='1'; }
+      section.prepend(c);
+      const ctx = c.getContext('2d');
+      let W,H; const fontSize=18; let columns=0; let drops=[];
+      const charsHero = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/\\{}[]#%@*&+-=アカサタナハマヤラワ0123456789';
+      function resize(){
+        W = c.width = section.clientWidth; H = c.height = section.clientHeight;
+        columns = Math.floor(W / fontSize);
+        drops = Array(columns).fill(1);
+      }
+      function draw(){
+        ctx.fillStyle='rgba(0,0,0,0.06)';
+        ctx.fillRect(0,0,W,H);
+        ctx.fillStyle='rgba(239,35,60,0.98)';
+        ctx.font = fontSize + 'px monospace';
+        for(let i=0;i<drops.length;i++){
+          const ch = charsHero[Math.floor(Math.random()*charsHero.length)];
+          ctx.fillText(ch, i*fontSize, drops[i]*fontSize);
+          if(drops[i]*fontSize > H && Math.random() > 0.965){ drops[i]=0; }
+          drops[i]++;
+        }
+      }
+      window.addEventListener('resize', resize, {passive:true});
+      resize();
+      setInterval(draw, 30);
+    })();
+
+          </script>
 </body>
 </html>
